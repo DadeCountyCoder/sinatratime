@@ -1,9 +1,7 @@
-require_relative './config/environment'
+require_relative './config/env'
 require 'sinatra/activerecord/rake'
 
-# Type `rake -T` on your command line to see the available rake tasks.
-
+desc "allow console to have access to models and db"
 task :console do
-  require 'pry'
-  Pry.start
+    Pry.start
 end
