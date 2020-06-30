@@ -13,15 +13,17 @@ gem 'require_all'
 gem 'sqlite3', '~> 1.3.6'
 gem 'thin'
 gem 'shotgun'
-gem 'pry'
 gem 'bcrypt'
 gem 'tux'
-gem 'byebug'
+
 
 group :test do
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'byebug'
   # gem 'database_cleaner', git: 'https://github.com//database_cleaner.git'
 end
 
