@@ -15,6 +15,8 @@ gem 'thin'
 gem 'shotgun'
 gem 'bcrypt'
 gem 'tux'
+#gem 'eventmachine'
+#gem install linecache -v '1.3.1'
 
 
 group :test do
@@ -24,9 +26,11 @@ group :test do
   gem 'pry'
   gem 'pry-nav'
   gem 'byebug'
+  gem 'bigdecimal', '1.4.2'
   # gem 'database_cleaner', git: 'https://github.com//database_cleaner.git'
 end
 
 group :development do
   gem 'rubocop'
+  # gem 'ruby-debug'
 end
