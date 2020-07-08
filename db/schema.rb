@@ -1,4 +1,4 @@
-ActiveRecord::Schema.define(version: 2019_08_15_013934) do
+ActiveRecord::Schema.define do
 
     create_table "books", force: :cascade do |t|
       t.string "publisher"
