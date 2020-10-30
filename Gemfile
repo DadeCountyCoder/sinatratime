@@ -26,5 +26,5 @@ group :test do
 end
 
 group :development do
-  gem 'rubocop'
+  gem 'rubocop', require: false
 end 
