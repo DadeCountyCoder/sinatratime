@@ -5,7 +5,7 @@ source "https://rubygems.org"
 git_source(:github) {|sinatratime| "https://https://github.com/DadeCountyCoder/sinatratime" }
 
 # gem "rails
-source 'http://rubygems.org'
+
 
 gem 'activerecord', '~> 4.2', '>= 4.2.6', require: 'active_record'
 gem 'bcrypt'
@@ -14,9 +14,10 @@ gem 'require_all'
 gem 'shotgun'
 gem 'sinatra'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3', '< 1.4'
 gem 'thin'
 gem 'tux'
+gem 'bigdecimal', '1.3.5'
 
 group :test do
   gem 'capybara'
