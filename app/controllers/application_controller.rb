@@ -1,4 +1,4 @@
-require './config/environment'
+require_relative '../config/environment'
 
 # Manages non-model-based routing, helpers, sessions
 class ApplicationController < Sinatra::Base

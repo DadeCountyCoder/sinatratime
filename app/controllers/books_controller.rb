@@ -1,38 +1,29 @@
-#here
+# Manages book-based routing, helpers, sessions
 class BooksController < ApplicationController
-  # GET: /books
-  #list all books
-  get "/books" do
-    erb :"/books/index.html"
+  get '/books/new' do
+    @error = params[:error]
+    erb :'/books/new.html'
   end
 
-  # GET: /books/new
-  get "/books/new" do
-    erb :"/books/new.html"
+  post '/books' do
+    redirect '/books/new?error=Invalid form submission, please try again:' if params.values.any?(&:empty?) || book.find_by(name: params[:name])
+    book = Book.create(
+      name: params[:name]
+    )
+    redirect "/books/#{book.id}"
   end
 
-  # POST: /books
-  post "/books" do
-    #create book
-    redirect "/books"
-    # redirect "/books/#{book.id}"
+  get '/books/:id' do
+    @book = Book.find_by(id: params[:id])
+    redirect :'books/new' unless @book
+    @error = params[:error]
+    user_ids = @books.reviews.map { |review| review[:user_id] }
+    @users = User.all.select { |user| user_ids.include?(user.id) }
+    erb :'/books/show.html'
   end
 
-  # GET: /books/5
-  
-
-  # GET: /books/5/edit
-  # get "/books/:id/edit" do
-  #   erb :"/books/edit.html"
-  # end
-
-  # # PATCH: /books/5
-  # patch "/books/:id" do
-  #   redirect "/books/:id"
-  # end
-
-  # # DELETE: /books/5/delete
-  # delete "/books/:id/delete" do
-  #   redirect "/books"
-  # end
+  get '/books' do
+    @books = Book.all
+    erb :'/books/index.html'
+  end
 end

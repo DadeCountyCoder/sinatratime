@@ -1,35 +1,51 @@
-#here
+# Manages user-based routing, helpers, sessions
 class UsersController < ApplicationController
-  
-    get "/signup" do
-      erb :"/users/new.html"
+  get '/login' do
+    redirect "/users/#{current_user.id}" if logged_in?
+    @error = params[:error]
+    erb :'/users/login.html'
+  end
+
+  post '/login' do
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect "/users/#{user.id}"
     end
-    
-    get "/login" do
-      erb :"/users/login.html"
+    redirect '/login?error=Invalid form submission, please try again:'
+  end
+
+  post '/logout' do
+    session.destroy
+    redirect back
+  end
+
+  get '/users/:id' do
+    @user = User.find_by(id: params[:id])
+    redirect back unless @user
+    book_ids = @user.reviews.map { |review| review[:book_id] }
+    @books = Book.all.select { |book| book_ids.include?(book.id) }
+    erb :'/users/show.html'
+  end
+
+  get '/signup' do
+    redirect "/users/#{current_user.id}" if logged_in?
+    @error = params[:error]
+    erb :'/users/signup.html'
+  end
+
+  post '/signup' do
+    if params.values.any?(&:empty?) ||
+       User.find_by(username: params[:username]) ||
+       User.find_by(email: params[:email])
+      redirect '/signup?error=Invalid form submission, please try again:'
     end
-  
-    post "/login" do
-      # session[:user_id] = user.id
-      redirect '/users/:id'
-    end
-    
-    post "/logout" do
-      # session.destroy
-      redirect '/'
-    end
-    
-    # shows all reviews by user
-    get "/users/:id" do    
-      erb :"/users/show.html"
-    end
-    
-    # create new user  
-    post "/users/new" do
-      # create new user from params
-      # send validation    
-      redirect "/login"
-    end
-    
-  
+    # there's no way that posting a clear password like this is secure
+    User.create(
+      username: params[:username],
+      email: params[:email],
+      password: params[:password]
+    )
+    redirect :login
+  end
 end

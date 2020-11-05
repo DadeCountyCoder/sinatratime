@@ -2,31 +2,29 @@
 
 source "https://rubygems.org"
 
-git_source(:github) {|sinatratime| "https://https://github.com/DadeCountyCoder/sinatratime" }
+git_source(:github) { |sinatratime| "https://https://github.com/DadeCountyCoder/sinatratime" }
 
 # gem "rails
-
-
-gem 'activerecord', '~> 4.2', '>= 4.2.6', require: 'active_record'
-gem 'bcrypt'
+gem 'activerecord', :require =>"active_record"
+gem 'sinatra-activerecord', :require =>"sinatra/activerecord"
+gem 'fabrication'
+gem 'faker'
 gem 'rake'
 gem 'require_all'
 gem 'shotgun'
 gem 'sinatra'
-gem 'sinatra-activerecord', require: 'sinatra/activerecord'
-gem 'sqlite3', '~> 1.3', '< 1.4'
+gem 'sqlite3'
 gem 'thin'
 gem 'tux'
-gem 'bigdecimal', '1.3.5'
+#gem 'dotenv'
 
-group :test do
-  gem 'capybara'
-  gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
-  gem 'rack-test'
-  gem 'rspec'
-end
 
-group :development do
-  gem 'pry'
-  gem 'rubocop'
+group :test, :development do
+ gem 'pry'
+ gem 'pry-nav'
+ gem 'byebug'
+ gem 'bcrypt'
+ gem 'rubocop'
+ gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+
 end
