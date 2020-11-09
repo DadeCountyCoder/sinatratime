@@ -18,7 +18,7 @@ gem 'thin'
 gem 'tux'
 gem 'rack-test'
 gem 'rspec'
-# gem 'bcrypt'
+#gem 'bcrypt'
 #gem 'dotenv'
 
 

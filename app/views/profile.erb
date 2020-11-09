@@ -1,5 +1,15 @@
-<h1>Notebook</h1>
-<p><a href="/new">Create a note on what you've read so far</a></p>
+<h1>Hey <%=@user.username.upcase %> Welcome to your notes</h1>
+<p><a href="/new">Create a note on what you've read so far
+to use as a refresher later on</a></p>
+<% @user.books.each do |book| %>
+    <ul>
+    <li><a href="/books/<%=book.id %>"><%=book.title %></a>
+    <br>
+    </li>
+    </ul>
+ <% end %>
 
-
+<p><a href="/books/new">Create a new Bookmark/Note</a></p>
 <p><a href="/signout">Sign Out</a></p>
+
+<body style="background-color: Grey;">
