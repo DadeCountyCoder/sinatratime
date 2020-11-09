@@ -1,0 +1,18 @@
+<h1>Note/Bookmark created---</h1>
+
+
+<h2>Book num: <%= @book.id %></h2>
+<h2>Title: <%= @book.title %></h2>
+<h5>Description: <%= @book.description %></h5>
+<h3>Content: <%= @book.content %></h3> 
+
+
+<form method="post" action="/books/<%= @book.id %>">
+<input id="hidden" type="hidden" name="_method" value="DELETE">
+<input type="submit" value="delete"> 
+</form>
+<a href="/books/<%= @book.id %>/edit">edit book</a>
+<br>
+<a href="/profile">back to profile</a>
+<br>
+<a href="/">Home page</a>
