@@ -1,10 +1,10 @@
-ENV['SINATRA_ENV'] = 'test'
+# ENV['SINATRA_ENV'] = 'test'
 
-require_relative '../config/environment'
-require 'rack/test'
-require 'capybara/rspec'
-require 'capybara/dsl'
-require 'rack_session_access/capybara'
+# # require_relative '../config/environment'
+# require 'rack/test'
+# require 'capybara/rspec'
+# require 'capybara/dsl'
+# require 'rack_session_access/capybara'
 
 raise 'Migrations are pending. Run `rake db:migrate SINATRA_ENV=test` to resolve the issue.' if ActiveRecord::Migrator.needs_migration?
 
@@ -33,4 +33,4 @@ def app
   Rack::Builder.parse_file('config.ru').first
 end
 
-Capybara.app = app
+# Capybara.app = app

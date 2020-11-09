@@ -16,6 +16,8 @@ gem 'sinatra'
 gem 'sqlite3'
 gem 'thin'
 gem 'tux'
+gem 'rack-test'
+gem 'rspec'
 #gem 'dotenv'
 
 
