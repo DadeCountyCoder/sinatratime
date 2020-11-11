@@ -1,5 +1,19 @@
 
-<h1>Save Notes on your Favortie Books</h1>
-<p> Please <a href="/signup">Sign Up</a> or <a href="/login">Log In</a> </p>
 
-<body style="background-color: gray;">
+<style> body {background-color: gray;}
+</style> 
+
+
+<h1>Save Notes on your Favortie Books</h1>
+<p> Please <a href="/signup">Sign Up</a> or <a href="/login">Log In</a> Please Login to continue.</p>
+<p> Can view your notes </p>
+<% Books.all.each do |book| %>
+    <ul>
+        <li><a href="/books/<%=book.id %>"> <%= book.title %> </a>, by <%= book.user.username %>
+
+        </li>
+    </ul>  
+ <% end %>
+
+<%# <body style="background-color: gray;"> %>
+

@@ -6,3 +6,12 @@ rubosop -a
 or  
 rubocop -x
 will find all issuses ans solve them automatically.
+
+
+install
+copy from github repo
+fork/clone
+bundle install
+rake db:migrate
+rake db:seed
+run shotgun
